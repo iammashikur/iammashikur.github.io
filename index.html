@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="rgb(24 ,24, 24)" />
+    <!-- Bootstrap CSS v5.0.2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+    <script>
+        let firebaseConfig = {
+            apiKey: "AIzaSyA861wrEeRvCceaLuAkVd15_ZJ1OYCy3y8",
+            authDomain: "liveletter-cef5d.firebaseapp.com",
+            databaseURL: "https://liveletter-cef5d-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "liveletter-cef5d",
+            storageBucket: "liveletter-cef5d.appspot.com",
+            messagingSenderId: "563436281887",
+            appId: "1:563436281887:web:458eba3a44e94fe5ceb52a",
+            measurementId: "G-X3ZS712G1D"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        let database = firebase.database();
+
+        let profile = firebase.database().ref('profile/');
+        profile.on('value', (snapshot) => {
+            const profile = snapshot.val();
+
+            $('#intro-name').html(profile.name);
+            $('.profile').attr('src', profile.avatar);
+            $("#typed").typed({
+                strings: profile.designation.split(','),
+                typeSpeed: 10,
+                startDelay: 1000,
+                backSpeed: 0,
+                backDelay: 1000,
+                loop: true,
+                cursorChar: " <span style='color:#00dcff'><<- </span>",
+                contentType: 'html',
+            });
+
+
+        });
+
+        // let data = firebase.database().ref('login/');
+        // data.on('value', (snapshot) => {
+        //     const data = snapshot.val();
+
+        //     $('#intro-name').html(data.username);
+        //     $('#intro-name').html(data.username);
+
+
+        //     $("#typed").typed({
+        //         strings: Object.keys(data),
+        //         typeSpeed: 10,
+        //         startDelay: 1000,
+        //         backSpeed: 0,
+        //         backDelay: 1000,
+        //         loop: true,
+        //         cursorChar: " <span style='color:#00dcff'><<- </span>",
+        //         contentType: 'html',
+        //     });
+
+
+        // });
+
+    </script>
+
+</head>
+
+<body>
+
+
+    <span class="stars"></span>
+    <span class="stars"></span>
+    <span class="stars"></span>
+
+    <header>
+
+
+        <div class='transperancy'></div>
+
+
+        <span class="menu-button">
+            <img src="assets/images/menu.png" alt="">
+        </span>
+
+        <div class="nav-menu">
+            <ul>
+                <li>
+                    <a id="intro"><i class="fas fa-home"></i> INTRO</a>
+                </li>
+
+                <li>
+                    <a id="about"><i class="fas fa-info-circle"></i> ABOUT</a>
+                </li>
+
+                <li>
+                    <a id="projects"><i class="fas fa-project-diagram"></i> PROJECTS</a>
+                </li>
+
+
+                <li>
+                    <a id="contact"><i class="fas fa-phone"></i> CONTACT</a>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+        <div class="intro">
+
+
+            <img src="assets/images/loading.gif" class="profile">
+
+
+
+            <div class="texts">
+                <h1 id="intro-name">Loading..... <span style="color:#00dcff"></span></h1>
+                <div class="devide-bar"></div>
+                <p> <i class="fas fa-terminal" style="color: #ff1581; font-size: 12px"></i> <span id="typed"></span>
+                </p>
+            </div>
+            <div class="buttons">
+                <a name="" id="" class="btn btn-danger technology" href="#" role="button">
+                    <i class="fab fa-github"></i>
+                </a>
+
+
+                <a name="" id="" class="btn btn-danger technology" href="#" role="button">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+
+                <a name="" id="" class="btn btn-danger technology" href="#" role="button">
+                    <i class="fab fa-facebook-messenger"></i>
+                </a>
+
+
+            </div>
+
+            <button class="more"><span>->></span> Learn More <span>
+                    <<- </span></button>
+        </div>
+    </header>
+
+    <div class="scroll">
+
+        <div class="section-devider"></div>
+
+        <section class="section-2 light">
+            <div class="container">
+
+
+                <div class="row">
+                    <div class="col-md-7 mt-5">
+                        <h1 class="mt-5">About Me <span style="color:var(--red)">~</span></h1>
+                        <div class="devide-bar"></div>
+
+                        <div class="mt-5">
+
+
+
+                            <img src="https://iammashikur.github.io/one.jpg" class="about-image" />
+
+
+
+                            <p class="about-text">
+                                Hello! This is Mashikur Rahman Mirash, I'll be happy if you call me "Mirash". I'm an
+                                Indie
+                                Web Developer (React.js & Laravel), I am a self taught coder &
+                                have potential to learn new technologies by my self. I like to solve problems ...
+                            </p>
+
+
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="col-md-5 mt-5 mb-5">
+
+                        <div class="skill-card">
+
+                            <div class="title">
+                                <h2 style="font-size: 40px"> SKILLS </h2>
+                            </div>
+                            <div class="skills">
+                                <div class="row" id="show-skills">
+
+                                    
+                        
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <div class="section-devider"></div>
+
+        <section class="section-3">
+            <div class="container pt-5">
+                <h1 style="color:var(--white)">My Projects <span style="color:var(--red)">~</span></h1>
+                <div class="devide-bar"></div>
+
+                <div class="project-section mt-5 pb-5">
+                    <div class="row">
+
+
+                        <div class="col-md-3">
+                            <div class="project" id="1">
+                                <div class="project-image">
+                                    <img src="https://iammashikur.github.io/one.jpg" alt="" class="w-100"
+                                        style="border-radius:20px;">
+                                </div>
+                                <div class="project-title">
+                                    <div class="project-icon">
+                                        <i class="fas fa-project-diagram "></i>
+                                    </div>
+                                    <h2>Deshdorpon (News Website)</h2>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <div class="project">
+                                <div class="project-image">
+                                    <img src="https://iammashikur.github.io/one.jpg" alt="" class="w-100"
+                                        style="border-radius:20px;">
+                                </div>
+                                <div class="project-title">
+                                    <div class="project-icon">
+                                        <i class="fas fa-project-diagram "></i>
+                                    </div>
+                                    <h2>SylhetMirror (Android App)</h2>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <div class="project">
+                                <div class="project-image">
+                                    <img src="https://iammashikur.github.io/one.jpg" alt="" class="w-100"
+                                        style="border-radius:20px;">
+                                </div>
+                                <div class="project-title">
+                                    <div class="project-icon">
+                                        <i class="fas fa-project-diagram "></i>
+                                    </div>
+                                    <h2>Sylhet Mirror</h2>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <div class="project">
+                                <div class="project-image">
+                                    <img src="https://iammashikur.github.io/one.jpg" alt="" class="w-100"
+                                        style="border-radius:20px;">
+                                </div>
+                                <div class="project-title">
+                                    <div class="project-icon">
+                                        <i class="fas fa-project-diagram "></i>
+                                    </div>
+                                    <h2>Sylhet Mirror</h2>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <div class="project">
+                                <div class="project-image">
+                                    <img src="https://iammashikur.github.io/one.jpg" alt="" class="w-100"
+                                        style="border-radius:20px;">
+                                </div>
+                                <div class="project-title">
+                                    <div class="project-icon">
+                                        <i class="fas fa-project-diagram "></i>
+                                    </div>
+                                    <h2>Sylhet Mirror</h2>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+
+                            <div class="d-flex justify-content-center">
+                                <button><span>-&gt;&gt;</span> View More <span>
+                                        &lt;&lt;- </span></button>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="section-devider"></div>
+
+        <section class="section-4 light">
+            <div class="container pt-5">
+                <h1>Contact <span style="color:var(--red)">~</span></h1>
+                <div class="devide-bar"></div>
+
+
+
+
+
+
+
+
+
+                <audio src="music.mp3" id="myVideo" loop="loop"></audio>
+                <script type="text/javascript">
+
+                    let isPlaying = false;
+
+                    ["click", "touchmove"].forEach((eventName) => {
+                        window.addEventListener(eventName, () => {
+                            if (!isPlaying) {
+
+                                try {
+                                    //play video here
+                                    var video = document.getElementById("myVideo");
+
+
+
+
+                                    //video.play();
+
+
+
+                                    console.log("Video is playing");
+                                    isPlaying = true;
+                                } catch (e) {
+                                    console.warn(e.message);
+                                }
+
+                            }
+                        });
+                    });
+                </script>
+
+
+
+
+
+
+            </div>
+        </section>
+
+    </div>
+
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js'></script>
+
+    <script>
+
+        let skills = firebase.database().ref('skills/');
+        skills.on('value', (snapshot) => {
+            $('#show-skills').html('');
+            snapshot.forEach(function (childSnapshot) {
+                var childData = childSnapshot.val();
+                console.log(childData);
+                $('#show-skills').append(`
+                    <div class="col-6">
+                        <div class="skill-item">
+                            <div class="heading">
+                                <div class="icons">
+                                    <img class="icon-image" src="${childData.skill_file}"
+                                        class="fab fa-html5"></i>
+                                </div>
+                                <div class="text">
+                                    ${childData.skill_name}
+                                </div>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated ${childData.skill_color}"
+                                    role="progressbar" aria-valuenow="${childData.skill_percent}" aria-valuemin="0"
+                                    aria-valuemax="100" style="width: ${childData.skill_percent}%"><span>${childData.skill_percent}%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                `);
+            });
+        });
+
+
+        $(".more").click(function () {
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $(".section-2").offset().top
+            }, 100);
+        });
+
+        $("#intro").click(function () {
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $("header").offset().top
+            }, 100);
+            $('.nav-menu').toggle(() => {
+                'slow',
+                    'easeOutBounce'
+            });
+        });
+
+
+
+        $("#about").click(function () {
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $(".section-2").offset().top
+            }, 100);
+            $('.nav-menu').toggle(() => {
+                'slow',
+                    'easeOutBounce'
+            });
+        });
+
+        $("#projects").click(function () {
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $(".section-3").offset().top
+            }, 100);
+            $('.nav-menu').toggle(() => {
+                'slow',
+                    'easeOutBounce'
+            });
+        });
+
+        $("#contact").click(function () {
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $(".section-4").offset().top
+            }, 100);
+            $('.nav-menu').toggle(() => {
+                'slow',
+                    'easeOutBounce'
+            });
+        });
+
+
+
+
+        $(".menu-button").on("click", () => {
+
+            $('.nav-menu').toggle(() => {
+                'slow',
+                    'easeOutBounce'
+            });
+
+
+        });
+
+        $(".project").on('click', function () {
+            console.log($(this).attr("id"));
+        })
+
+
+
+    </script>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>
