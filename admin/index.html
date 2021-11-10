@@ -235,6 +235,51 @@
                             </div>
                         </div>
 
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                Projects
+                            </div>
+                            <div class="card-body">
+
+
+                                <div class="mt-4 mb-4">
+
+                                    <div class="row" id="show-projects">
+
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label for=""></label>
+                                    <input type="file" name="" id="project-file" class="form-control" placeholder=""
+                                        aria-describedby="helpId">
+                                    <small id="helpId" class="text-muted">Project Image</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for=""></label>
+                                    <input type="text" name="" id="project-name" class="form-control" placeholder=""
+                                        aria-describedby="helpId">
+
+                                    <small id="helpId" class="text-muted">Project Name</small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for=""></label>
+                                    <textarea type="text" name="" id="project-details" class="form-control" placeholder=""
+                                        aria-describedby="helpId"></textarea>
+                                    <small id="helpId" class="text-muted">Project Details</small>
+                                </div>
+
+   
+
+
+                                <button id="project" type="button" class="btn btn-primary"> Save </button>
+                            </div>
+                        </div>
+
 
                     </div>
 
@@ -375,6 +420,34 @@
             });
         });
 
+
+        let projects = firebase.database().ref('projects/');
+        projects.on('value', (snapshot) => {
+            $('#show-projects').html('');
+            snapshot.forEach(function (childSnapshot) {
+                var childData = childSnapshot.val();
+
+                $('#show-projects').append(`
+                    <div class="col-6 mb-4">
+                        <div class="skill-item">
+                            <div class="heading">
+                                <div class="icons">
+                                    <img class="icon-image" src="${childData.project_file}"
+                                        class="fab fa-html5"></i>
+                                </div>
+                                <div class="text">
+                                    ${childData.project_name} 
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn-primary mt-4" onclick="editProject(${childSnapshot.key})"> Edit </button>
+                            <button class="btn btn-danger mt-4" onclick="deleteProject(${childSnapshot.key})"> Delete </button>
+                        </div>
+                    </div>
+                `);
+            });
+        });
+
         const editSkill = (key) => {
 
             $('#modelId').modal('show');
@@ -471,14 +544,11 @@
 
 
         $("#skill").on("click", async () => {
-
-
             let rand = Date.now();
             let skill_file = document.querySelector('#skill-file').files[0];
             let skill_name = $("#skill-name").val();
             let skill_color = $("#skill-color").val();
             let skill_percent = $("#skill-percent").val();
-
             const ref = firebase.storage().ref().child('skills/' + rand);
 
             if ($("#skill-file").val()) { // returns true if the string is not empty
@@ -488,18 +558,36 @@
                     })
                 });
             }
-
             await database.ref('skills/' + rand).set({
                 skill_file: 'https://firebasestorage.googleapis.com/v0/b/liveletter-cef5d.appspot.com/o/skills%2F' + rand + '?alt=media',
                 skill_name,
                 skill_percent,
                 skill_color,
             });
+        });
 
 
 
+        $("#project").on("click", async () => {
+            let rand = Date.now();
+            let project_file = document.querySelector('#project-file').files[0];
+            let project_name = $("#project-name").val();
+            let project_details = $("#project-details").val();
+            const ref = firebase.storage().ref().child('projects/' + rand);
 
-        })
+            if ($("#project-file").val()) { // returns true if the string is not empty
+                await ref.put(project_file).then((snapshot) => {
+                    snapshot.ref.getDownloadURL().then(url => {
+                        let avatar = console.log(' * new url', url)
+                    })
+                });
+            }
+            await database.ref('projects/' + rand).set({
+                project_file: 'https://firebasestorage.googleapis.com/v0/b/liveletter-cef5d.appspot.com/o/projects%2F' + rand + '?alt=media',
+                project_name,
+                project_details,
+            });
+        });
 
 
 
@@ -572,12 +660,9 @@
 
             sessionStorage.setItem("username", null);
             sessionStorage.setItem("password", null);
-
             $("#login").show();
             $("#admin").hide();
-
-
-
+            
         });
 
 
