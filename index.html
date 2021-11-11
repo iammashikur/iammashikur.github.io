@@ -344,7 +344,7 @@
             height: 100%;
             width: 100%;
             object-fit: cover;
-            border-radius: 50px;
+            border-radius: 25px;
         }
 
         @media only screen and (max-width: 600px) {
@@ -353,7 +353,7 @@
                 height: 245px;
                 width: 100%;
                 object-fit: cover;
-                border-radius: 50px;
+                border-radius: 25px;
             }
 
             .h-mobile {
@@ -364,6 +364,10 @@
                 height: 200px;
             }
 
+            .project-view-icon {
+                padding-top: 8px !important;
+
+            }
 
 
         }
@@ -381,8 +385,24 @@
                 height: 220px;
             }
 
+            
 
 
+
+        }
+
+        .project-view-icon {
+            background: var(--red);
+            padding: 0px;
+            height: 43px;
+            width: 43px;
+            border-radius: 25px;
+            margin-right: 10px;
+        }
+
+        .project-view-icon i {
+            font-size: 20px;
+            margin-left: 9px;
         }
     </style>
 
@@ -399,9 +419,20 @@
                 <div class="col-12 col-md-6 p-5 h-100 h-mobile">
                     <img id="project-view-image">
                 </div>
-                <div class="col-12 col-md-6 p-5 h-100 h-mobile">
-                    <h1 class="text-white"> <i class="fas fa-project-diagram    "></i> <span
-                            id="project-view-name"></span></h1>
+                <div class="col-12 col-md-6 py-lg-5 py-0 px-lg-0 px-5 h-100 h-mobile mt-lg-0 mt-5">
+
+                    <div class="project-title d-flex">
+
+                        <h1 class="text-white d-inline-flex">
+                            <div class="project-view-icon">
+                                <i class="fas fa-project-diagram    "></i>
+                            </div>
+                            <span id="project-view-name"></span>
+                        </h1>
+
+                    </div>
+
+
 
                     <div id="project-view-details"></div>
 
@@ -466,8 +497,6 @@
                 $('#project-view-image').attr('src', showProject.project_file);
                 $('#project-view-name').html(showProject.project_name);
                 $('#project-view-details').html(showProject.project_details);
-
-
 
             });
 
