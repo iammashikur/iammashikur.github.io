@@ -463,3 +463,15 @@ section {
 .project .project-icon i{
     font-size: 13px;
 }
+
+.shape-circle {
+    background-color: var(--blue);
+    padding: 8px;
+    height: 35px;
+    width: 35px;
+    border-radius: 25px;
+}
+
+.rounded-corner{
+    border-radius: 15px;
+}
