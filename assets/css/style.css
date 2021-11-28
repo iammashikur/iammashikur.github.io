@@ -614,7 +614,7 @@ section {
   }
   
   .custom .submit-btn {
-    background-color: #fd917e;
+    background-color: var(--blue);
     filter: drop-shadow(2px 2px 3px #0003);
     color: #fff;
 
@@ -659,3 +659,26 @@ section {
     }
   }
   
+  footer{
+    background-color: var(--light-black);
+    padding: 5px;
+    bottom: 0px;
+  }
+
+  .contact-links ul li a{
+    font-size: 35px;
+    color: var(--white);
+    text-decoration: none;
+    display: flex;
+    margin-bottom: 1rem;
+
+  }
+
+  .contact-links ul li a i {
+    color: var(--red);
+    background-color: white;
+    padding: 10px;
+    border-radius: 30px;
+    margin-right: 15px;
+}
+
