@@ -675,7 +675,7 @@ section {
   }
 
   .contact-links ul li a i {
-    color: var(--red);
+    color: var(--green);
     background-color: white;
     padding: 10px;
     border-radius: 30px;
