@@ -178,7 +178,7 @@
 
 
 
-                            <img src="https://iammashikur.github.io/one.jpg" class="about-image" />
+                            <img src="assets/images/five.jpg" class="about-image" />
 
 
 
@@ -195,8 +195,8 @@
                         </div>
 
                         <center>
-                            <button class="btn btn-primary"><span>-&gt;&gt;</span> CV Download <span>
-                                    &lt;&lt;- </span></button>
+                            <a href="resume.pdf" class="btn btn-primary d-block"><span>-&gt;&gt;</span> Resume Download <span>
+                                    &lt;&lt;- </span></a>
                         </center>
 
 
@@ -302,8 +302,8 @@
 
                                         <div class="mb-4">
 
-                                            <h3>Backend Web Developer <span> -> </span> 2018 <span
-                                                    style="color: var(--blue);"> -></span> 2021</h3>
+                                            <h3>Full-Stack Developer <span> -> </span> 2020 <span
+                                                    style="color: var(--blue);"> -></span> Now</h3>
                                             <p>Hurtle Bee</p>
 
                                         </div>
@@ -347,7 +347,6 @@
 
 
                         <div class="col-12">
-
                             <div class="d-flex justify-content-center">
                                 <button><span>-&gt;&gt;</span> View More <span>
                                         &lt;&lt;- </span></button>
@@ -383,7 +382,7 @@
 
                       <div class="contact-links">
                           <ul>
-                              <li><a href=""> <i class="fas fa-phone    "></i> 01770814477</a></li>
+                              <li><a href=""> <i class="fas fa-phone    "></i> Phone</a></li>
                               <li><a href=""> <i class="fas fa-envelope    "></i> iammashikur@gmail.com</a></li>
                               <li><a href=""> <i class="fab fa-facebook-messenger    "></i> iammashikur</a></li>
                               <li><a href=""> <i class="fab fa-whatsapp    "></i> 01770814477</a></li>
@@ -626,9 +625,28 @@
             snapshot.forEach(function (childSnapshot) {
                 var childData = childSnapshot.val();
 
+                // $('#show-projects').append(`
+
+                //         <div class="col-md-3 col-6" onclick="showProject(${childSnapshot.key})">
+                //             <div class="project" id="1">
+                //                 <div class="project-image">
+                //                     <img src="${childData.project_file}" alt="" class="w-100"
+                //                         style="border-radius:20px;">
+                //                 </div>
+                //                 <div class="project-title">
+                //                     <div class="project-icon">
+                //                         <i class="fas fa-project-diagram "></i>
+                //                     </div>
+                //                     <h2>${childData.project_name} </h2>
+                //                 </div>
+
+                //             </div>
+                //         </div>
+                // `);
+
                 $('#show-projects').append(`
 
-                        <div class="col-md-3 col-6" onclick="showProject(${childSnapshot.key})">
+                        <div class="col-md-3 col-6">
                             <div class="project" id="1">
                                 <div class="project-image">
                                     <img src="${childData.project_file}" alt="" class="w-100"
