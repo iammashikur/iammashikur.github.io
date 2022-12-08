@@ -290,12 +290,14 @@ header .intro .buttons {
 
 
 section {
-    min-height: 100vh;
-    background-color: var(--white);
-    position: relative;
-    width: 100%;
-    z-index: 810;
-    box-shadow: 0px 0px 5px 0px #585858;
+  min-height: 100vh;
+  background-color: var(--white);
+  position: relative;
+  width: 100%;
+  z-index: 810;
+  box-shadow: 0px 0px 5px 0px #585858;
+  display: flex;
+  align-items: center;
 }
 
 .section-3{
