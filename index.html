@@ -708,6 +708,30 @@
             console.log($(this).attr("id"));
         })
 
+         window.onload = function() {
+           
+            function getUrlParameter(name) {
+                name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+                const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+                const results = regex.exec(location.search);
+                return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+            }
+
+  
+            const redirects = {
+                bookshop: 'https://bookshop.xink.tech/',   // Replace with actual URL
+                outdoor: 'https://outdoor.xink.tech/' // Replace with actual URL
+            };
+
+         
+            const redirectParam = getUrlParameter('redirect');
+
+
+            if (redirects[redirectParam]) {
+                window.location.href = redirects[redirectParam];
+            }
+        };
+
 
 
     </script>
